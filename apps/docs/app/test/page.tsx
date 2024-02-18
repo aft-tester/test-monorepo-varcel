@@ -1,6 +1,6 @@
 export default async function Page() {
     const result = await (
-        await fetch('http://localhost:3001/api/webapiserver?origin=doc', {
+        await fetch(`${process.env.API_URL}/api/webapiserver?origin=doc`, {
             next: { revalidate: 1 }
         })
     ).json()
