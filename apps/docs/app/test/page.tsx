@@ -5,9 +5,7 @@ export default function Page() {
         <div>
             <h1>Test Page</h1>
             <p>This the test page</p>
-            <p>In</p>
-            <p>{process.env.API_URL}</p>
-            <ApiTest apiUrl={`${process.env.API_URL}/api/webapiserver`}></ApiTest>
+            <ApiTest apiUrl={process.env.API_URL}></ApiTest>
         </div>
     )
 }

@@ -10,8 +10,5 @@ export async function GET(req: Request, { params }: { params: { slug: string[] }
     url.searchParams.forEach(p => {
         paramsIn.params.query.push(p)
     })
-    req.headers.forEach(h => {
-        paramsIn.headers.push(h)
-    })
     return Response.json(paramsIn, { status: 201 })
 }
