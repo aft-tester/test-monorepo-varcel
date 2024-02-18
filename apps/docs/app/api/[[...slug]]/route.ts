@@ -1,5 +1,4 @@
 export async function GET(req: Request, { params }: { params: { slug: string[] } }) {
-    const headers: string[] = []
     const paramsIn = {
         headers: [] as any[],
         params: {
@@ -14,7 +13,5 @@ export async function GET(req: Request, { params }: { params: { slug: string[] }
     req.headers.forEach(h => {
         paramsIn.headers.push(h)
     })
-    console.log('Test')
-    console.log(paramsIn)
     return Response.json(paramsIn, { status: 201 })
 }
