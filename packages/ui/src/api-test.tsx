@@ -38,7 +38,6 @@ export const ApiTest = ({
         setFailed(true)
       })
   }
-  console.log(params)
   return (
     <button style={{
       width: '80%',

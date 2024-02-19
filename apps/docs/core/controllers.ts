@@ -36,11 +36,10 @@ function getMovieController(): Controller {
         get: async () => {
             try {
                 const clientContext = await mongoClientPromise
-                const tb = clientContext.client.db('sample_analytics').collection('accounts')
+                const tb = clientContext.getDb(1).getCollection(1)
                 const res = await tb.find({}, { limit: 10 }).toArray()
                 return [{ success: true, data: res }, { status: 201 }]
             } catch (ex: any) {
-                console.log(ex.message)
                 return [{ success: false, message: ex.message }, { status: 500 }];
             }
         }
