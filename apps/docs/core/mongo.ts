@@ -85,7 +85,7 @@ export function getMongoServerContext({
 }
 
 export const mongoClientPromise: Promise<MongoContext> = getMongoServerContext({
-    connectionString: process.env.MONGODB_URI,
+    connectionString: `mongodb+srv://${process.env.TEST_MDB_USER}:${process.env.TEST_MDB_KEY}@${process.env.TEST_MDB_CLUSTER}.mongodb.net/`,
     config: process.env.DB_CONFIG,
     envType: process.env.NODE_ENV,
 })
