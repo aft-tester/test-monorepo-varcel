@@ -1,4 +1,4 @@
-export default async function TestLayout({
+export default function TestLayout({
   children,
 }: {
   children: React.ReactNode;

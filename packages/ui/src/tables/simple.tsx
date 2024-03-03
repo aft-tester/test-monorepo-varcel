@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState } from 'react'
+import React from 'react';
 import { getAPIService } from '../core/api.service';
 
-const Table = async ({
+const Table = ({
     requestConfig, columns
 }: {
     requestConfig: {
@@ -20,9 +20,11 @@ const Table = async ({
 }) => {
     const { apiUri, path, params } = requestConfig
     const apiService = getAPIService<any>(`${apiUri}/${path}`)
-    // const [data, setData] = useState<any[]>([])
-    const data: any[] = await apiService.get({})
-            .then((r) => r.data ?? [])
+    const [data, setData] = React.useState<any[]>([])
+    React.useEffect(() => {
+        apiService.get({})
+            .then(d => setData(d.data ?? []))
+    }, [])
     return (
         <table>
             <tr style={{
@@ -34,13 +36,13 @@ const Table = async ({
             }}>
                 {columns.map(c => (<td>{c.name}</td>))}
             </tr>
-                {data.map(r => (
-                    <tr>
-                        {columns.map(c => (
-                            <td>{r[c.key]}</td>
-                        ))}
-                    </tr>
-                ))}
+            {data.map(r => (
+                <tr>
+                    {columns.map(c => (
+                        <td>{r[c.key]}</td>
+                    ))}
+                </tr>
+            ))}
         </table>
     )
 }

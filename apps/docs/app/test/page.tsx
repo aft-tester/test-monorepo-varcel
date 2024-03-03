@@ -1,5 +1,5 @@
 
-export default async function Page() {
+export default function Page() {
     return (
         <div style={{alignItems: 'center'}}>
             <p>This test directory page. To go to:</p>
