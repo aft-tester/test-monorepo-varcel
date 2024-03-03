@@ -2,28 +2,14 @@
 
 
 const Table = ({
-    requestConfig, columns, data
+    columns, data
 }: {
-    requestConfig: {
-        apiUri?: string
-        path?: string
-        params?: {
-            [key: string]: any
-        }
-    },
     columns: {
         name: string
         key: string
     }[]
     data: any[]
 }) => {
-    // const { apiUri, path, params } = requestConfig
-    // // const apiService = getAPIService<any>(`${apiUri}/${path}`)
-    // // const [data, setData] = React.useState<any[]>([])
-    // // React.useEffect(() => {
-    //     apiService.get({})
-    //         .then(d => setData(d.data ?? []))
-    // }, [])
     return (
         <table>
             <tr style={{

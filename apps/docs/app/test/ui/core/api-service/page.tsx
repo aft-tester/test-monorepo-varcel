@@ -1,16 +1,11 @@
-import { APIService, getAPIService } from "./data-getter"
-import { SimpleTable } from "@repo/ui/tables"
+import { SimpleMain } from "@repo/ui/mains"
 import React from "react"
 
 export default function Page() {
-    const apiService = new APIService<any>(`${process.env.API_URL}/api/movies`)
-    let data: any[] = []
-    apiService.get({})
-        .then(d => data = d.data ?? [])
     return (
         <div>
             <h1>Table Test Page</h1>
-            <SimpleTable
+            <SimpleMain
                 requestConfig={{
                     apiUri: process.env.API_URL,
                     path: "api/movies"
@@ -33,7 +28,6 @@ export default function Page() {
                         key: 'products',
                     },
                 ]}
-                data={data}
             />
         </div>
     )
