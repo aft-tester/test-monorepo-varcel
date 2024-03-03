@@ -1,3 +1,5 @@
+
+
 type FilterCondition = 'exact' | 'fitting' | 'like' | 'before' | 'after' | 'beforeInc' | 'afterInc'
 type OrderDirection = 'asc' | 'desc' | 'none' | string
 type APIResponse<T = any> = {
@@ -181,3 +183,7 @@ export const apiServiceStore: APIServiceStore = ((): APIServiceStore => {
         get: getService
     }
 })()
+
+export function getAPIService<T=any>(apiUrl: string): IAPIService<T> {
+    return new APIService<T>(apiUrl)
+}
