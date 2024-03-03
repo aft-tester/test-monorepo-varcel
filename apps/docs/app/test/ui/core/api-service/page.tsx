@@ -1,4 +1,5 @@
 import { SimpleTable } from "@repo/ui/tables"
+
 export default function Page() {
     return (
         <div>
