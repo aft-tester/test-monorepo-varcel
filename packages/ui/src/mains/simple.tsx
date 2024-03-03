@@ -4,7 +4,7 @@ import React from "react"
 import { getAPIService } from "../core/api.service"
 import Table from "../tables/simple"
 
-const Main = async ({
+const Main = ({
     requestConfig, columns
 }: {
     requestConfig: {
@@ -19,11 +19,16 @@ const Main = async ({
         key: string
     }[]
 }) => {
-    const { apiUri, path, params } = requestConfig
+    const { apiUri, path } = requestConfig
     const apiService = getAPIService(`${apiUri}/${path}`)
-
-    const data = await apiService.get({})
-        .then(d => d.data ?? [])
+    const [data, setData] = React.useState<any[]>([])
+    React.useEffect(() => {
+        apiService.get({})
+            .then(d => {
+                debugger
+                setData(d.data ?? [])
+            })
+    }, [])
     return (
         <Table
             columns={columns}
